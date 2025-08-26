@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fun with HTML — ART-109</title>
+    <style>
+      body {
+        font-family: system-ui, Arial, sans-serif;
+        margin: 24px;
+        line-height: 1.6;
+      }
+
+      header,
+      main,
+      footer {
+        max-width: 860px;
+        margin: 0 auto;
+      }
+
+      section {
+        padding-block: 16px;
+        border-top: 1px solid #ddd;
+      }
+
+      img,
+      iframe {
+        max-width: 100%;
+        height: auto;
+        border: 0;
+      }
+
+      textarea {
+        width: 100%;
+        max-width: 560px;
+      }
+
+      button {
+        padding: 8px 14px;
+        border: 1px solid #333;
+        border-radius: 8px;
+        background: #333;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #555;
+      }
+
+      progress {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .badge {
+        font-size: 0.85rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        padding: 0 6px;
+        margin-left: 0.35rem;
+      }
+
+      .rainbow {
+        background: linear-gradient(
+          90deg,
+          #ff6b6b,
+          #feca57,
+          #48dbfb,
+          #5f27cd,
+          #ff6b6b
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        background-size: 300% 100%;
+        animation: slide 3s linear infinite;
+      }
+
+      @keyframes slide {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 100% 50%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1> A guide to good taste in cars</h1>
+    </header>
+
+    <main>
+      <section>
+        <h2>Important question</h2>
+        <textarea
+          rows="4"
+          placeholder="Who makes the best cars in the world?"
+        ></textarea>
+      </section>
+
+      <section>
+        <h2>A little hint</h2>
+        <img src="images/image1.jpg" alt="Your chosen image" />
+      </section>
+
+      <section>
+        <h2>Answer</h2>
+        <details>
+          <summary>click here</summary>
+          <p>It´s of course Porsche, no surprise</p>
+        </details>
+      </section>
+
+      <section>
+        <h2>Favourite Porsche?</h2>
+        <label for="car">Only 911 models:</label>
+        <input list="cars" id="car" name="car" placeholder="start typing…" />
+        <datalist id="cars">
+          <option value="911 Carrera"></option>
+          <option value="911 Turbo"></option>
+          <option value="911 GT3"></option>
+          <option value="911 Targa"></option>
+          <option value="911 RSR"></option>
+          <option value="911 Speedster"></option>
+        </datalist>
+      </section>
+
+      <section>
+        <h2>Show me your favourite Porsche</h2>
+        <label for="myfile">Choose a file:</label>
+        <input type="file" id="myfile" name="myfile" />
+      </section>
+
+      <section>
+        <h2>Pure 911 RSR flat 6 engine noise</h2>
+        <div
+          style="
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+          "
+        >
+          <iframe
+            src="https://www.youtube.com/embed/sKJrAUkQ9Zw"
+            style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            "
+            frameborder="0"
+            allowfullscreen
+          >
+          </iframe>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Franz Pfitzer - ART 109</p>
+    </footer>
+
+    <script>
+      document.getElementById("partyBtn").addEventListener("click", () => {
+        document.getElementById("title").classList.toggle("rainbow");
+      });
+
+      const rng = document.getElementById("rng");
+      const prog = document.getElementById("prog");
+      rng.addEventListener("input", () => {
+        prog.value = rng.value;
+      });
+    </script>
+  </body>
+</html>
