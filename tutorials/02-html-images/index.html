@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Favorite Car</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    img {
+      max-width: 100%;   /* responsiv */
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Favorite Car: Porsche GT3 Rennsport</h1>
+
+  <picture>
+    <!-- WebP Versionen -->
+    <source 
+      srcset="images/porsche-gt3-rennsport-640.webp" 
+      media="(max-width: 640px)" 
+      type="image/webp">
+    <source 
+      srcset="images/porsche-gt3-rennsport-1280.webp" 
+      media="(max-width: 1280px)" 
+      type="image/webp">
+    <source 
+      srcset="images/porsche-gt3-rennsport-1920.webp" 
+      type="image/webp">
+
+    <!-- JPG Fallback -->
+    <img 
+      src="images/porsche-gt3-rennsport-1280.jpg" 
+      srcset="
+        images/porsche-gt3-rennsport-640.jpg 640w,
+        images/porsche-gt3-rennsport-1280.jpg 1280w,
+        images/porsche-gt3-rennsport-1920.jpg 1920w
+      "
+      sizes="(max-width: 640px) 100vw, (max-width: 1280px) 80vw, 1200px"
+      alt="Porsche GT3 Rennsport car">
+  </picture>
+
+</body>
+</html>
