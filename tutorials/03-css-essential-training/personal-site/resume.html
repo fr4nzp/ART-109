@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Franz Pfitzer – Digital Product Design Student</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="home">
+    <div class="content-wrapper">
+      <header>
+        <h1 class="site-title">Franz Pfitzer</h1>
+        <h2 class="site-subtitle">Digital Product Design Student</h2>
+        <p>
+          I am studying Digital Product Design at <strong>HfG Schwäbisch Gmünd</strong> (6th semester) and currently spending my exchange semester at <strong>San José State University</strong> in California. My focus is on user‑centered, technology‑driven product concepts and clear, functional interfaces.
+        </p>
+      </header>
+
+      <main>
+        <section id="about">
+          <h3>About</h3>
+          <p>
+            I enjoy working at the intersection of design and technology: from research and flow definition to wireframes and interactive prototypes. Most recently, I completed an internship in Infotainment Design at Porsche.
+          </p>
+        </section>
+
+        <section id="skills">
+          <h3>Skills</h3>
+          <ul>
+            <li><strong>Web Development:</strong> HTML, CSS, JavaScript</li>
+            <li><strong>Frameworks:</strong> Svelte, Next.js, React, Vue</li>
+            <li><strong>Backend & Tools:</strong> Node.js, MongoDB, Docker, Postman, Terminus</li>
+          </ul>
+        </section>
+
+        <section id="projects">
+          <h3>Selected Projects</h3>
+
+          <article>
+            <h4>Health cAIre</h4>
+            <div class="carousel">
+              <img src="images/Health-1.png" alt="Health cAIre image 1" class="active" />
+              <img src="images/Health-2.png" alt="Health cAIre image 2" />
+              <img src="images/Health-3.png" alt="Health cAIre image 3" />
+              <button class="prev">&#10094;</button>
+              <button class="next">&#10095;</button>
+            </div>
+            <p>
+              AI‑powered health app concept: from ideation, wireframes and user flows to a consistent UI system. The goal is to make personal health data (via sensors) understandable and deliver motivating, easy‑to‑access insights.
+            </p>
+          </article>
+
+          <article>
+            <h4>BeeSmart</h4>
+            <div class="carousel">
+              <img src="images/Bee-1.png" alt="BeeSmart image 1" class="active" />
+              <img src="images/Bee-2.png" alt="BeeSmart image 2" />
+              <button class="prev">&#10094;</button>
+              <button class="next">&#10095;</button>
+            </div>
+            <p>
+              Digital co‑pilot for beekeeping: documenting mite infestations, treatment tracking and AI‑based evaluation. A logbook allows trend‑based decisions for bee health – designed for beginners and advanced users alike.
+            </p>
+          </article>
+        </section>
+
+        <section id="resume">
+  <h3>Resume</h3>
+  <dl>
+    <dt>High School</dt>
+    <dd>Königin-Olga-Stift, Stuttgart</dd>
+    <dt>Studies</dt>
+    <dd>HfG Schwäbisch Gmünd – Digital Product Design (B.A.), 6th semester</dd>
+    <dt>Internship</dt>
+    <dd>Porsche – Infotainment Design</dd>
+    <dt>Exchange</dt>
+    <dd>San José State University (SJSU), California</dd>
+  </dl>
+  <p>Full resume: <a href="resume.pdf" target="_blank" rel="noopener">Download PDF</a></p>
+</section>
+
+        </section>
+
+        <section id="contact">
+          <h3>Contact</h3>
+          <p>Best reached via email or my profiles.</p>
+          <p>
+            <a href="mailto:franz.pfitzer@sjsu.edu">franz.pfitzer@sjsu.edu</a> ·
+            <a href="https://www.linkedin.com/in/franz-pfitzer-5a143a306/" target="_blank" rel="noopener">LinkedIn</a> ·
+            <a href="https://github.com/fr4nzp" target="_blank" rel="noopener">GitHub</a>
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      <p>© <span id="year"></span> Franz Pfitzer</p>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      document.querySelectorAll('.carousel').forEach(carousel => {
+        const images = carousel.querySelectorAll('img');
+        let current = 0;
+        const showImage = (index) => {
+          images.forEach((img, i) => img.classList.toggle('active', i === index));
+        };
+        carousel.querySelector('.prev').addEventListener('click', () => {
+          current = (current - 1 + images.length) % images.length;
+          showImage(current);
+        });
+        carousel.querySelector('.next').addEventListener('click', () => {
+          current = (current + 1) % images.length;
+          showImage(current);
+        });
+      });
+    </script>
+  </body>
+</html>
