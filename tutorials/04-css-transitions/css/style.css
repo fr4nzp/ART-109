@@ -1,0 +1,32 @@
+title{
+    font-size: 2rem;
+    margin: 50px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.square {
+    width: 200px;
+    height: 200px;
+    background-color: #3498DB;
+    border-radius: 20px;
+    margin: 50px auto;
+}
+.square:hover {
+    background-color: #1FCCFB;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+.button{
+    background-color: blueviolet;
+    color: #ffff;
+    padding: 20px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+.button-div{
+    text-align: center;
+    margin: 50px 0;
+}
+.button:hover{
+    background-color: #1FCCFB;
+    color: #000;
+}
