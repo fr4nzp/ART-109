@@ -7,33 +7,35 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body class="home">
-    <div class="content-wrapper">
-      <header>
-        <h1>Franz Pfitzer</h1>
-        <h2>Digital Product Design Student</h2>
-      </header>
+    <div class="hero">
+      <div class="content-bg">
+        <header>
+          <h1>Franz Pfitzer</h1>
+          <h2>Digital Product Design Student</h2>
+        </header>
 
-      <main>
-        <p>
-          I am studying <strong>Digital Product Design</strong> at the
-          <strong>HfG Schwäbisch Gmünd</strong> and currently spending my
-          exchange semester at <strong>San José State University</strong> in
-          California. My focus is on creating user-centered, technology-driven
-          product concepts with clear, functional design.
-        </p>
+        <main>
+          <p>
+            I am studying <strong>Digital Product Design</strong> at the
+            <strong>HfG Schwäbisch Gmünd</strong> and currently spending my
+            exchange semester at <strong>San José State University</strong> in
+            California. My focus is on creating user-centered, technology-driven
+            product concepts with clear, functional design.
+          </p>
 
-        <p>
-          Previously, I completed an internship in
-          <strong>Infotainment Design</strong> at <strong>Porsche</strong>. My
-          projects range from <em>user-centered design concepts</em> to
-          <em>backend and technical implementations</em>, reflecting the full
-          spectrum of my skills across design, development, and technology. You
-          can view my <a href="resume.html">resume</a> for more details.
-        </p>
-      </main>
+          <p>
+            Previously, I completed an internship in
+            <strong>Infotainment Design</strong> at <strong>Porsche</strong>. My
+            projects range from <em>user-centered design concepts</em> to
+            <em>backend and technical implementations</em>. You can view my
+            <a href="resume.html">resume</a> for more details.
+          </p>
+        </main>
+      </div>
     </div>
 
     <footer>
+      <p>© <span id="year"></span> Franz Pfitzer</p>
       <ul class="social-icons">
         <li>
           <a
@@ -42,7 +44,7 @@
             rel="noopener"
             aria-label="LinkedIn profile"
           >
-            <img src="images/icon-logo-linkedin.png" alt="LinkedIn icon">
+            <img src="images/icon-logo-linkedin.png" alt="LinkedIn icon" />
           </a>
         </li>
         <li>
@@ -52,10 +54,14 @@
             rel="noopener"
             aria-label="GitHub profile"
           >
-            <img src="images/icon-logo-github.svg" alt="GitHub icon">
+            <img src="images/icon-logo-github.svg" alt="GitHub icon" />
           </a>
         </li>
       </ul>
     </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
