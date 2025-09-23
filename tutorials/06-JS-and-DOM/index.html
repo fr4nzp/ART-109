@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Porsche DOM + JavaScript Interaction</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="brand">PORSCHE</h1>
+    <div id="js-status" class="status"><span class="badge">loading…</span></div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>0–100 Pulse (Turbo S)</h2>
+      <p>This box pulses on the same cadence as the new 911 Turbo S does 0–100 km/h.</p>
+      <div id="timer-box" class="box">911 TURBO S</div>
+      <small class="hint">Pulse interval: 2.5s</small>
+    </section>
+
+<section class="card">
+  <h2>Turbo S Gallery</h2>
+  <div class="controls">
+    <button id="toggle-image-btn" class="btn">Show / Hide</button>
+    <button id="next-image-btn" class="btn">Next Image</button>
+  </div>
+
+  <img id="photo" class="photo" src="images/turbo-s-1.jpeg" alt="Porsche 911 Turbo S" />
+</section>
+
+
+    <section class="card">
+      <h2>911 Generations Grid (11)</h2>
+      <p>Click a tile to toggle it. Use the buttons to reveal all or reset styling.</p>
+      <div id="grid" class="grid">
+        <div class="cell">Original 901/911 (’64–’73)</div>
+        <div class="cell">G-Series (’73–’89)</div>
+        <div class="cell">930 Turbo (’75–’89)</div>
+        <div class="cell">964 (’89–’94)</div>
+        <div class="cell">993 (’94–’98)</div>
+        <div class="cell">996.1 (’98–’01)</div>
+        <div class="cell">996.2 (’01–’04)</div>
+        <div class="cell">997 (’04–’12)</div>
+        <div class="cell">991 (’11–’19)</div>
+        <div class="cell">992.1 (’19–’24)</div>
+        <div class="cell">992.2 (’24/25– )</div>
+      </div>
+      <div class="controls">
+        <button id="reveal-all-btn" class="btn">Reveal All</button>
+        <button id="reset-grid-btn" class="btn">Reset Style</button>
+      </div>
+    </section>
+  </main>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
