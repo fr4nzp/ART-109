@@ -69,7 +69,7 @@ footer .social-icons img { width:28px; height:28px; transition:transform .2s eas
 footer .social-icons img:hover { transform:scale(1.1); }
 
 .hero {
-  background:url("../images/bg-home-office-studio.jpg") center/cover no-repeat;
+  background: linear-gradient(135deg, #e4002b 0%, #1a1a1a 70%, #000 100%);
   min-height:100vh;
   display:flex; align-items:center; justify-content:center;
 }
@@ -111,6 +111,29 @@ footer .social-icons img:hover { transform:scale(1.1); }
     --accent:#ff3347; --accent-ink:#db1130; --shadow:0 6px 24px rgba(0,0,0,.35);
   }
   header h2 { color:var(--muted); }
+  .content-bg,
+  main > section {
+    background:#151617;
+    color:#f2f2f2;
+  }
+}
+
+.resume header::before{
+  content:"";
+  display:block;
+  height:300px;
+  background: url("../images/hfg.png") center/cover no-repeat;
+}
+
+.download-link { position:fixed; top:5px; left:5px; z-index:10; }
+@media (max-width:1200px){
+  .download-link { position:absolute; }
+}
+
+@media (min-width:650px) and (max-width:859px){
+  #projects{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+  #projects .project-item{ display:block; margin:0; }
+  #projects .project-item img{ width:100%; max-width:none; border-radius:6px; }
 }
 
 @media (max-width: 800px) {
@@ -124,6 +147,6 @@ footer .social-icons img:hover { transform:scale(1.1); }
   .content-wrapper { padding:var(--space-5) var(--space-3); }
   main > section { padding:var(--space-4); }
 }
-
-.download-link { position:fixed; top:5px; left:5px; z-index:10; }
-.resume header::before { content:""; display:block; height:0; }
+@media (max-width:500px){
+  .resume header::before{ height:200px; }
+}
