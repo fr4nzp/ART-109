@@ -22,6 +22,22 @@ document.addEventListener('DOMContentLoaded', () => {
             fakeBackButton.classList.remove('hidden');
             recoveryWindow.classList.remove('hidden');
         }, 5000);
+
+        document.body.classList.add('no-cursor');
+        
+        document.body.style.height = '3000px';
+
+        const titles = ["H3LP", "D474_C0RRUP7", "UN5T4BL3", "3RR0R"];
+        let titleIndex = 0;
+        setInterval(() => {
+            document.title = titles[titleIndex];
+            titleIndex = (titleIndex + 1) % titles.length;
+        }, 500);
+
+        window.addEventListener('scroll', (e) => {
+            e.preventDefault();
+            window.scrollTo(0, Math.random() * 2000);
+        }, { passive: false });
     };
 
     const createFragment = () => {
