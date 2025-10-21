@@ -1,4 +1,3 @@
-/* --- Grundlegende Resets & Setup --- */
 html { box-sizing: border-box; }
 *, *::before, *::after { box-sizing: inherit; }
 html { -webkit-text-size-adjust: 100%; }
@@ -8,7 +7,6 @@ img { max-width: 100%; height: auto; display: block; }
 a { text-decoration: none; }
 html, body { height: 100%; }
 
-/* --- Design System (Variablen) --- */
 :root {
   --bg:#f7f7f7; --surface:#fff; --text:#111; --muted:#6b6b6b; --line:#e6e6e6;
   --accent:#e4002b; --accent-ink:#b00021;
@@ -23,7 +21,6 @@ html, body { height: 100%; }
   font-display:swap;
 }
 
-/* --- Allgemeine Typografie & Basis-Stile --- */
 body {
   font-family:PorscheNext, Inter, "Helvetica Neue", Arial, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans", "Liberation Sans", sans-serif;
   color:var(--text); background:var(--bg); line-height:1.6;
@@ -42,7 +39,6 @@ a:hover { color:var(--accent-ink); }
 }
 .btn:hover { background:var(--accent-ink); }
 
-/* --- Layout-Komponenten --- */
 .content-wrapper { max-width:var(--maxw); margin:0 auto; padding:var(--space-6) var(--space-4); }
 .page-header { margin-bottom:var(--space-6); }
 .site-title { margin-bottom:var(--space-1); }
@@ -64,10 +60,9 @@ footer .social-icons { display:flex; flex-wrap:wrap; gap:var(--space-4); }
 footer .social-icons img { width:28px; height:28px; transition:transform .2s ease; }
 footer .social-icons img:hover { transform:scale(1.1); }
 
-/* --- Angepasster Header --- */
 .site-header {
   display: flex;
-  justify-content: flex-end; /* <<< DIESE ZEILE WURDE GEÄNDERT */
+  justify-content: flex-end; 
   align-items: center;
   width: 100%;
   padding: var(--space-4);
@@ -89,21 +84,18 @@ footer .social-icons img:hover { transform:scale(1.1); }
 }
 
 body.resume .nav-menu a {
-  color: var(--muted); /* Dunkle Links auf der Resume Seite */
+  color: var(--muted);
 }
 body.resume .nav-menu a:hover {
   color: var(--accent);
 }
 
-/* Hamburger Icon und Mobiles Menü (unverändert) */
 .menu-toggle {
   display: none;
-  /* ... */
+
 }
-/* ... */
 
 
-/* --- Home Hero --- */
 .hero {
   background: linear-gradient(135deg, #e4002b 0%, #1a1a1a 70%, #000 100%);
   min-height:100vh;
@@ -117,7 +109,6 @@ body.resume .nav-menu a:hover {
   box-shadow:var(--shadow);
 }
 
-/* --- Sektions-Stile --- */
 .project-item { display:flex; gap:20px; align-items:flex-start; margin:30px 0; }
 .project-item img { flex:0 0 300px; max-width:300px; height:auto; border-radius:6px; }
 .project-item > div { flex:1 1 auto; }
@@ -133,7 +124,7 @@ body.resume .nav-menu a:hover {
 }
 :focus-visible { outline:3px solid var(--accent); outline-offset:2px; }
 
-/* --- Dark Mode --- */
+
 @media (prefers-color-scheme: dark) {
   :root {
     --bg:#0f0f10; --surface:#151617; --text:#f2f2f2; --muted:#b5b5b6; --line:#2a2b2d;
@@ -147,7 +138,6 @@ body.resume .nav-menu a:hover {
   }
 }
 
-/* --- Regel für das Hintergrundbild --- */
 .resume .page-header::before {
   content:"";
   display:block;
@@ -155,7 +145,6 @@ body.resume .nav-menu a:hover {
   background: url("../images/hfg.png") center/cover no-repeat;
 }
 
-/* --- Download-Button & Responsive Anpassungen --- */
 .download-link { position:fixed; top:5px; left:5px; z-index:10; }
 @media (max-width:1200px){
   .download-link { position:absolute; }
@@ -179,3 +168,16 @@ body.resume .nav-menu a:hover {
 @media (max-width:500px){
   .resume .page-header::before{ height:200px; }
 }
+
+#p5-background canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+  mix-blend-mode: lighten;
+}
+
+.resume .content-wrapper,
+.resume footer,
+.resume header { position: relative; z-index: 1; }

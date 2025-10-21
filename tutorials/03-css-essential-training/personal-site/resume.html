@@ -19,19 +19,22 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body class="resume">
+
+    <div id="p5-background"></div>
+
     <header class="site-header">
-    <nav class="main-nav">
+      <nav class="main-nav">
         <button class="menu-toggle" id="menu-toggle" aria-label="Menü öffnen">
-            <span></span>
-            <span></span>
-            <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
         <ul class="nav-menu" id="nav-menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="resume.html">Resume</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="resume.html">Resume</a></li>
         </ul>
-    </nav>
-</header>
+      </nav>
+    </header>
 
     <a class="btn download-link" href="files/resume.pdf" download>
       Download Resume (PDF)
@@ -212,16 +215,15 @@
     </footer>
 
     <script>
-      // Code für das Copyright-Jahr
       document.getElementById("year").textContent = new Date().getFullYear();
-
-      // Code für das mobile Menü
       const menuToggle = document.getElementById('menu-toggle');
       const navMenu = document.getElementById('nav-menu');
-
       menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
       });
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+    <script src="js/p5-bg.js"></script>
   </body>
 </html>
