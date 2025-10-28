@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Franz Pfitzer – Digital Product Design Student</title>
+
+    <meta name="description" content="Portfolio von Franz Pfitzer, Student für Digital Product Design. Entdecke Projekte in UI/UX, Web Development und Infotainment Design.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Franz Pfitzer – Digital Product Design Portfolio">
+    <meta property="og:description" content="Einblick in die Arbeiten von Franz Pfitzer, von nutzerzentrierten App-Konzepten bis hin zu technischen Implementierungen.">
+    <meta property="og:image" content="https://DEIN-USERNAME.github.io/images/social-preview.png">
+    <meta property="og:url" content="https://DEIN-USERNAME.github.io">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="home">
+<header class="site-header">
+    <nav class="main-nav">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menü öffnen">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="resume.html">Resume</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <div class="hero">
+      <div class="content-bg">
+        <header>
+          <h1>Franz Pfitzer</h1>
+          <h2>Digital Product Design Student</h2>
+        </header>
+
+        <main>
+          <p>
+            I am studying <strong>Digital Product Design</strong> at the
+            <strong>HfG Schwäbisch Gmünd</strong> and currently spending my
+            exchange semester at <strong>San José State University</strong> in
+            California. My focus is on creating user-centered, technology-driven
+            product concepts with clear, functional design.
+          </p>
+
+          <p>
+            Previously, I completed an internship in
+            <strong>Infotainment Design</strong> at <strong>Porsche</strong>. My
+            projects range from <em>user-centered design concepts</em> to
+            <em>backend and technical implementations</em>. You can view my
+            <a href="resume.html">resume</a> for more details.
+          </p>
+        </main>
+      </div>
+    </div>
+
+    <footer>
+      <p>© <span id="year"></span> Franz Pfitzer</p>
+      <ul class="social-icons">
+        <li>
+          <a
+            href="https://www.linkedin.com/in/franz-pfitzer-5a143a306/"
+            target="_blank"
+            rel="noopener"
+            aria-label="LinkedIn profile of Franz Pfitzer"
+          >
+            <img src="images/icon-logo-linkedin.png" alt="Link zum LinkedIn Profil von Franz Pfitzer" />
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/fr4nzp"
+            target="_blank"
+            rel="noopener"
+            aria-label="GitHub profile of Franz Pfitzer"
+          >
+            <img src="images/icon-logo-github.svg" alt="Link zum GitHub Profil von Franz Pfitzer" />
+          </a>
+        </li>
+      </ul>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const menuToggle = document.getElementById('menu-toggle');
+      const navMenu = document.getElementById('nav-menu');
+
+      menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+      });
+    </script>
+  </body>
+</html>
