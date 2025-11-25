@@ -1,0 +1,447 @@
+/* =============================================================================
+   NOSTALGIA OS - TASKBAR STYLESHEET
+   Bottom taskbar with Start button, app buttons, and system tray
+   ============================================================================= */
+
+/* =============================================================================
+   TASKBAR CONTAINER
+   ============================================================================= */
+
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--taskbar-height);
+    background-color: var(--win95-gray);
+    display: flex;
+    align-items: stretch;
+    padding: 2px;
+    gap: 2px;
+    z-index: var(--z-taskbar);
+    /* Win95 taskbar border */
+    border-top: 2px solid var(--win95-white);
+    box-shadow: inset 0 1px 0 var(--win95-light-gray);
+}
+
+/* =============================================================================
+   START BUTTON
+   ============================================================================= */
+
+.start-button {
+    min-width: 54px;
+    height: 100%;
+    padding: 2px 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: bold;
+    font-size: 11px;
+    background-color: var(--win95-gray);
+    border: 2px solid;
+    border-color: var(--win95-white) var(--win95-shadow-dark) 
+                  var(--win95-shadow-dark) var(--win95-white);
+    cursor: pointer;
+    outline: none;
+    flex-shrink: 0;
+}
+
+.start-button:hover {
+    filter: brightness(1.05);
+}
+
+.start-button:active,
+.start-button.active {
+    border-color: var(--win95-shadow-dark) var(--win95-white) 
+                  var(--win95-white) var(--win95-shadow-dark);
+    padding: 3px 5px 1px 7px;
+}
+
+.start-button:focus-visible {
+    outline: 1px dotted var(--win95-black);
+    outline-offset: -4px;
+}
+
+.start-icon {
+    font-size: 14px;
+    line-height: 1;
+}
+
+.start-text {
+    font-weight: bold;
+}
+
+/* =============================================================================
+   START MENU
+   ============================================================================= */
+
+.start-menu {
+    position: fixed;
+    bottom: var(--taskbar-height);
+    left: 2px;
+    width: 200px;
+    background-color: var(--win95-gray);
+    border: 2px solid;
+    border-color: var(--win95-white) var(--win95-shadow-dark) 
+                  var(--win95-shadow-dark) var(--win95-white);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    z-index: var(--z-start-menu);
+    display: flex;
+    flex-direction: column;
+}
+
+.start-menu[hidden] {
+    display: none;
+}
+
+/* Start menu header/banner */
+.start-menu-header {
+    background: linear-gradient(
+        to right,
+        var(--win95-navy) 0%,
+        #1084d0 100%
+    );
+    color: var(--win95-white);
+    padding: 8px 12px;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    transform: rotate(0deg);
+    border-bottom: 1px solid var(--win95-white);
+}
+
+.start-menu-title {
+    display: block;
+}
+
+/* Start menu items container */
+.start-menu-items {
+    padding: 2px;
+}
+
+.start-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 11px;
+    transition: background-color 0.1s ease;
+}
+
+.start-menu-item:hover {
+    background-color: var(--win95-selection);
+    color: var(--win95-selection-text);
+}
+
+.menu-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.menu-label {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Start menu separator */
+.start-menu-separator {
+    height: 1px;
+    background-color: var(--win95-shadow-medium);
+    margin: 2px 4px;
+    border-bottom: 1px solid var(--win95-white);
+}
+
+/* Start menu animation */
+@keyframes start-menu-open {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.start-menu:not([hidden]) {
+    animation: start-menu-open 0.15s ease-out;
+}
+
+/* =============================================================================
+   TASKBAR APPS AREA (Running applications)
+   ============================================================================= */
+
+.taskbar-apps {
+    flex: 1;
+    display: flex;
+    gap: 2px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    align-items: stretch;
+    /* Hide scrollbar but keep functionality */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.taskbar-apps::-webkit-scrollbar {
+    display: none;
+}
+
+/* Individual app button in taskbar */
+.taskbar-app-button {
+    min-width: 120px;
+    max-width: 160px;
+    height: 100%;
+    padding: 2px 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    background-color: var(--win95-gray);
+    border: 2px solid;
+    border-color: var(--win95-white) var(--win95-shadow-dark) 
+                  var(--win95-shadow-dark) var(--win95-white);
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.taskbar-app-button:hover {
+    filter: brightness(1.05);
+}
+
+.taskbar-app-button:active {
+    border-color: var(--win95-shadow-dark) var(--win95-white) 
+                  var(--win95-white) var(--win95-shadow-dark);
+    padding: 3px 5px 1px 7px;
+}
+
+/* Active (selected) app in taskbar */
+.taskbar-app-button.active {
+    border-color: var(--win95-shadow-dark) var(--win95-white) 
+                  var(--win95-white) var(--win95-shadow-dark);
+    padding: 3px 5px 1px 7px;
+    background-color: var(--win95-gray);
+}
+
+.taskbar-app-icon {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.taskbar-app-label {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+/* =============================================================================
+   SYSTEM TRAY (Clock and icons)
+   ============================================================================= */
+
+.system-tray {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 4px;
+    border: 1px solid;
+    border-color: var(--win95-shadow-medium) var(--win95-white) 
+                  var(--win95-white) var(--win95-shadow-medium);
+    background-color: var(--win95-gray);
+    flex-shrink: 0;
+    min-width: 60px;
+}
+
+/* System tray icons (optional) */
+.system-tray-icon {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.system-tray-icon:hover {
+    filter: brightness(1.1);
+}
+
+/* Clock */
+.system-clock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    padding: 2px 4px;
+    cursor: default;
+    min-width: 50px;
+    text-align: center;
+}
+
+#clock-time {
+    font-family: 'MS Sans Serif', monospace;
+}
+
+/* =============================================================================
+   TASKBAR CONTEXT MENU (right-click on taskbar)
+   ============================================================================= */
+
+.taskbar-context-menu {
+    position: fixed;
+    background-color: var(--win95-gray);
+    border: 2px solid;
+    border-color: var(--win95-light-gray) var(--win95-shadow-medium) 
+                  var(--win95-shadow-medium) var(--win95-light-gray);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    min-width: 150px;
+    z-index: calc(var(--z-taskbar) + 1);
+    padding: 2px;
+}
+
+.taskbar-context-menu-item {
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.taskbar-context-menu-item:hover {
+    background-color: var(--win95-selection);
+    color: var(--win95-selection-text);
+}
+
+/* =============================================================================
+   TASKBAR OVERFLOW (when too many apps)
+   ============================================================================= */
+
+.taskbar-overflow-indicator {
+    width: 16px;
+    height: 100%;
+    background-color: var(--win95-gray);
+    border: 1px solid var(--win95-shadow-medium);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.taskbar-overflow-indicator::after {
+    content: '»';
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.taskbar-overflow-indicator:hover {
+    background-color: var(--win95-selection);
+    color: var(--win95-selection-text);
+}
+
+/* =============================================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================================= */
+
+@media (max-width: 768px) {
+    .taskbar {
+        height: 32px;
+    }
+    
+    .start-button {
+        min-width: 48px;
+        font-size: 10px;
+    }
+    
+    .taskbar-app-button {
+        min-width: 100px;
+        max-width: 120px;
+        font-size: 10px;
+    }
+    
+    .start-menu {
+        width: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .taskbar-app-label {
+        display: none;
+    }
+    
+    .taskbar-app-button {
+        min-width: 32px;
+        max-width: 32px;
+        padding: 2px;
+        justify-content: center;
+    }
+    
+    .start-text {
+        display: none;
+    }
+    
+    .start-button {
+        min-width: 32px;
+    }
+}
+
+/* =============================================================================
+   ACCESSIBILITY
+   ============================================================================= */
+
+/* Focus indicators */
+.start-button:focus-visible,
+.taskbar-app-button:focus-visible,
+.start-menu-item:focus-visible {
+    outline: 1px dotted var(--win95-black);
+    outline-offset: -3px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .taskbar {
+        border-top-width: 3px;
+    }
+    
+    .start-button,
+    .taskbar-app-button {
+        font-weight: bold;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .start-menu:not([hidden]) {
+        animation: none;
+    }
+    
+    .taskbar-app-button,
+    .start-menu-item {
+        transition: none;
+    }
+}
+
+/* =============================================================================
+   KEYBOARD NAVIGATION
+   ============================================================================= */
+
+/* Show focus indicators when navigating with keyboard */
+.taskbar:focus-within .start-button:focus,
+.taskbar:focus-within .taskbar-app-button:focus {
+    outline: 2px solid var(--win95-navy);
+    outline-offset: -4px;
+}

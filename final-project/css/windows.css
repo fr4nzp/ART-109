@@ -1,0 +1,522 @@
+/* =============================================================================
+   NOSTALGIA OS - WINDOWS STYLESHEET
+   Window chrome, title bars, buttons, and authentic Win95 borders
+   ============================================================================= */
+
+/* =============================================================================
+   WINDOW BASE STRUCTURE
+   ============================================================================= */
+
+.window {
+    position: absolute;
+    background-color: var(--win95-gray);
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    min-height: 150px;
+    max-width: 100%;
+    max-height: calc(100vh - var(--taskbar-height));
+    z-index: var(--z-windows-base);
+    /* Win95 window border - outer frame */
+    border: 2px solid;
+    border-color: var(--win95-light-gray) var(--win95-shadow-dark) 
+                  var(--win95-shadow-dark) var(--win95-light-gray);
+    box-shadow: inset 1px 1px 0 var(--win95-white),
+                inset -1px -1px 0 var(--win95-shadow-medium),
+                2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Active window - slightly brighter shadow */
+.window.active {
+    box-shadow: inset 1px 1px 0 var(--win95-white),
+                inset -1px -1px 0 var(--win95-shadow-medium),
+                3px 3px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Minimized window */
+.window.minimized {
+    display: none;
+}
+
+/* Maximized window */
+.window.maximized {
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: calc(100% - var(--taskbar-height)) !important;
+    border-radius: 0;
+}
+
+/* =============================================================================
+   TITLE BAR
+   ============================================================================= */
+
+.window-title-bar {
+    height: var(--title-bar-height);
+    background: linear-gradient(
+        to right,
+        var(--win95-navy) 0%,
+        #1084d0 100%
+    );
+    color: var(--win95-navy-text);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 2px 2px 4px;
+    cursor: move;
+    user-select: none;
+    font-weight: bold;
+    font-size: 11px;
+    /* Prevent text selection while dragging */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+/* Inactive window title bar */
+.window:not(.active) .window-title-bar {
+    background: linear-gradient(
+        to right,
+        var(--win95-shadow-medium) 0%,
+        #7a7a7a 100%
+    );
+    color: var(--win95-inactive-text);
+}
+
+.window-title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.window-icon {
+    width: 14px;
+    height: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+.window-title-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* =============================================================================
+   WINDOW CONTROL BUTTONS (Minimize, Maximize, Close)
+   ============================================================================= */
+
+.window-controls {
+    display: flex;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.window-button {
+    width: 16px;
+    height: 14px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    background-color: var(--win95-gray);
+    border: 1px solid;
+    border-color: var(--win95-white) var(--win95-shadow-dark) 
+                  var(--win95-shadow-dark) var(--win95-white);
+    cursor: pointer;
+    outline: none;
+}
+
+.window-button:hover {
+    filter: brightness(1.05);
+}
+
+.window-button:active {
+    border-color: var(--win95-shadow-dark) var(--win95-white) 
+                  var(--win95-white) var(--win95-shadow-dark);
+    transform: translateY(1px);
+}
+
+.window-button .button-icon {
+    pointer-events: none;
+    line-height: 1;
+    display: block;
+}
+
+/* Specific button styling */
+.minimize-button .button-icon {
+    margin-top: 4px;
+}
+
+.maximize-button .button-icon {
+    font-size: 9px;
+}
+
+.close-button .button-icon {
+    font-size: 11px;
+}
+
+/* Inactive window buttons */
+.window:not(.active) .window-button {
+    background-color: var(--win95-silver);
+}
+
+/* =============================================================================
+   MENU BAR
+   ============================================================================= */
+
+.window-menu-bar {
+    background-color: var(--win95-gray);
+    display: flex;
+    gap: 0;
+    padding: 2px 4px;
+    border-bottom: 1px solid var(--win95-light-gray);
+    font-size: 11px;
+}
+
+.menu-item {
+    padding: 2px 8px;
+    cursor: pointer;
+    position: relative;
+}
+
+.menu-item:hover {
+    background-color: var(--win95-selection);
+    color: var(--win95-selection-text);
+}
+
+.menu-item:active {
+    background-color: var(--win95-shadow-medium);
+}
+
+/* Dropdown menu (when menu item is clicked) */
+.menu-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--win95-gray);
+    border: 2px solid;
+    border-color: var(--win95-light-gray) var(--win95-shadow-medium) 
+                  var(--win95-shadow-medium) var(--win95-light-gray);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    min-width: 120px;
+    z-index: 1000;
+    padding: 2px;
+}
+
+.menu-dropdown-item {
+    padding: 4px 24px 4px 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.menu-dropdown-item:hover {
+    background-color: var(--win95-selection);
+    color: var(--win95-selection-text);
+}
+
+.menu-dropdown-separator {
+    height: 1px;
+    background-color: var(--win95-shadow-medium);
+    margin: 2px 4px;
+    border-bottom: 1px solid var(--win95-white);
+}
+
+/* =============================================================================
+   WINDOW CONTENT AREA
+   ============================================================================= */
+
+.window-content {
+    flex: 1;
+    overflow: auto;
+    background-color: var(--win95-white);
+    padding: 8px;
+    border: 2px solid;
+    border-color: var(--win95-shadow-medium) var(--win95-white) 
+                  var(--win95-white) var(--win95-shadow-medium);
+    margin: 2px;
+}
+
+/* Content area for apps that need gray background (like dialogs) */
+.window-content.gray-background {
+    background-color: var(--win95-gray);
+}
+
+/* =============================================================================
+   STATUS BAR
+   ============================================================================= */
+
+.window-status-bar {
+    height: 20px;
+    background-color: var(--win95-gray);
+    border-top: 1px solid var(--win95-white);
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+    font-size: 11px;
+}
+
+.status-text {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.status-bar-section {
+    border: 1px solid;
+    border-color: var(--win95-shadow-medium) var(--win95-white) 
+                  var(--win95-white) var(--win95-shadow-medium);
+    padding: 1px 4px;
+    margin-right: 4px;
+}
+
+/* =============================================================================
+   WINDOW RESIZE HANDLES (optional)
+   ============================================================================= */
+
+.window-resize-handle {
+    position: absolute;
+    background: transparent;
+}
+
+/* Corner handles */
+.resize-handle-nw {
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    cursor: nw-resize;
+}
+
+.resize-handle-ne {
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    cursor: ne-resize;
+}
+
+.resize-handle-sw {
+    bottom: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    cursor: sw-resize;
+}
+
+.resize-handle-se {
+    bottom: 0;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    cursor: se-resize;
+}
+
+/* Edge handles */
+.resize-handle-n {
+    top: 0;
+    left: 8px;
+    right: 8px;
+    height: 4px;
+    cursor: n-resize;
+}
+
+.resize-handle-s {
+    bottom: 0;
+    left: 8px;
+    right: 8px;
+    height: 4px;
+    cursor: s-resize;
+}
+
+.resize-handle-e {
+    right: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 4px;
+    cursor: e-resize;
+}
+
+.resize-handle-w {
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 4px;
+    cursor: w-resize;
+}
+
+/* =============================================================================
+   WINDOW ANIMATIONS
+   ============================================================================= */
+
+/* Window open animation */
+@keyframes window-open {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.window.opening {
+    animation: window-open 0.15s ease-out;
+}
+
+/* Window close animation */
+@keyframes window-close {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+.window.closing {
+    animation: window-close 0.15s ease-in;
+}
+
+/* Window minimize animation */
+@keyframes window-minimize {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.1);
+        transform-origin: bottom left;
+    }
+}
+
+.window.minimizing {
+    animation: window-minimize 0.2s ease-in;
+}
+
+/* Window restore animation */
+@keyframes window-restore {
+    0% {
+        opacity: 0;
+        transform: scale(0.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.window.restoring {
+    animation: window-restore 0.2s ease-out;
+}
+
+/* =============================================================================
+   DIALOG WINDOWS (Special styling)
+   ============================================================================= */
+
+.window.dialog {
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.window.dialog .window-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    background-color: var(--win95-gray);
+}
+
+.dialog-icon {
+    font-size: 32px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog-message {
+    flex: 1;
+}
+
+.dialog-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.dialog-button {
+    min-width: 75px;
+    padding: 4px 12px;
+}
+
+/* =============================================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================================= */
+
+@media (max-width: 768px) {
+    .window {
+        min-width: 280px;
+        max-width: calc(100% - 16px);
+    }
+    
+    .window-title-bar {
+        height: 24px;
+    }
+    
+    .window-button {
+        width: 20px;
+        height: 18px;
+    }
+}
+
+/* =============================================================================
+   ACCESSIBILITY
+   ============================================================================= */
+
+/* Focus indicator for keyboard navigation */
+.window:focus-within {
+    /* Subtle glow effect when window has focus */
+    box-shadow: inset 1px 1px 0 var(--win95-white),
+                inset -1px -1px 0 var(--win95-shadow-medium),
+                0 0 0 2px var(--win95-navy),
+                3px 3px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .window {
+        border-width: 3px;
+    }
+    
+    .window-title-bar {
+        font-weight: bold;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .window.opening,
+    .window.closing,
+    .window.minimizing,
+    .window.restoring {
+        animation: none;
+    }
+}
