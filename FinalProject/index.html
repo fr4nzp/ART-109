@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nostalgia OS - Eine interaktive Windows 95-Erfahrung im Browser">
+    <meta name="author" content="Franz">
+    <title>Nostalgia OS</title>
+    
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/desktop.css">
+    <link rel="stylesheet" href="css/windows.css">
+    <link rel="stylesheet" href="css/taskbar.css">
+    <link rel="stylesheet" href="css/apps/msn-messenger.css">
+    
+    <!-- Preload pixel font for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <!-- Desktop Container -->
+    <div id="desktop" class="desktop">
+        <!-- Desktop Icons -->
+        <div class="desktop-icons">
+            <div class="desktop-icon" data-app="my-computer" tabindex="0">
+                <div class="icon-image">💻</div>
+                <div class="icon-label">My Computer</div>
+            </div>
+            
+            <div class="desktop-icon" data-app="recycle-bin" tabindex="0">
+                <div class="icon-image">🗑️</div>
+                <div class="icon-label">Recycle Bin</div>
+            </div>
+            
+            <div class="desktop-icon" data-app="notepad" tabindex="0">
+                <div class="icon-image">📝</div>
+                <div class="icon-label">Notepad</div>
+            </div>
+            
+            <div class="desktop-icon" data-app="paint" tabindex="0">
+                <div class="icon-image">🎨</div>
+                <div class="icon-label">Paint</div>
+            </div>
+            
+            <div class="desktop-icon" data-app="internet-explorer" tabindex="0">
+                <div class="icon-image">🌐</div>
+                <div class="icon-label">Internet Explorer</div>
+            </div>
+            
+            <div class="desktop-icon" data-app="msn-messenger" tabindex="0">
+                <div class="icon-image">💬</div>
+                <div class="icon-label">MSN Messenger</div>
+            </div>
+            
+            <div class="desktop-icon" data-app="minesweeper" tabindex="0">
+                <div class="icon-image">💣</div>
+                <div class="icon-label">Minesweeper</div>
+            </div>
+            
+            <div class="desktop-icon" data-app="about" tabindex="0">
+                <div class="icon-image">ℹ️</div>
+                <div class="icon-label">About</div>
+            </div>
+        </div>
+        
+        <!-- Windows Container -->
+        <div id="windows-container" class="windows-container"></div>
+    </div>
+    
+    <!-- Taskbar -->
+    <div id="taskbar" class="taskbar">
+        <!-- Start Button -->
+        <button id="start-button" class="start-button" aria-label="Start Menu">
+            <span class="start-icon">⊞</span>
+            <span class="start-text">Start</span>
+        </button>
+        
+        <!-- Start Menu (hidden by default) -->
+        <div id="start-menu" class="start-menu" hidden>
+            <div class="start-menu-header">
+                <span class="start-menu-title">Nostalgia OS</span>
+            </div>
+            <div class="start-menu-items">
+                <div class="start-menu-item" data-app="notepad">
+                    <span class="menu-icon">📝</span>
+                    <span class="menu-label">Notepad</span>
+                </div>
+                <div class="start-menu-item" data-app="paint">
+                    <span class="menu-icon">🎨</span>
+                    <span class="menu-label">Paint</span>
+                </div>
+                <div class="start-menu-item" data-app="minesweeper">
+                    <span class="menu-icon">💣</span>
+                    <span class="menu-label">Minesweeper</span>
+                </div>
+                <div class="start-menu-item" data-app="internet-explorer">
+                    <span class="menu-icon">🌐</span>
+                    <span class="menu-label">Internet Explorer</span>
+                </div>
+                <div class="start-menu-item" data-app="msn-messenger">
+                    <span class="menu-icon">💬</span>
+                    <span class="menu-label">MSN Messenger</span>
+                </div>
+                <div class="start-menu-separator"></div>
+                <div class="start-menu-item" data-app="about">
+                    <span class="menu-icon">ℹ️</span>
+                    <span class="menu-label">About Nostalgia OS</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Running Apps Area -->
+        <div id="taskbar-apps" class="taskbar-apps"></div>
+        
+        <!-- System Tray -->
+        <div class="system-tray">
+            <div id="system-clock" class="system-clock" aria-live="polite">
+                <span id="clock-time">12:00</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Window Template (hidden, cloned by JS) -->
+    <template id="window-template">
+        <div class="window" role="dialog" aria-modal="false">
+            <!-- Title Bar -->
+            <div class="window-title-bar">
+                <div class="window-title">
+                    <span class="window-icon"></span>
+                    <span class="window-title-text">Window</span>
+                </div>
+                <div class="window-controls">
+                    <button class="window-button minimize-button" aria-label="Minimize" title="Minimize">
+                        <span class="button-icon">_</span>
+                    </button>
+                    <button class="window-button maximize-button" aria-label="Maximize" title="Maximize">
+                        <span class="button-icon">□</span>
+                    </button>
+                    <button class="window-button close-button" aria-label="Close" title="Close">
+                        <span class="button-icon">✕</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Menu Bar (optional, can be added per app) -->
+            <div class="window-menu-bar" hidden>
+                <div class="menu-item">File</div>
+                <div class="menu-item">Edit</div>
+                <div class="menu-item">View</div>
+                <div class="menu-item">Help</div>
+            </div>
+            
+            <!-- Window Content -->
+            <div class="window-content">
+                <!-- App-specific content goes here -->
+            </div>
+            
+            <!-- Status Bar (optional) -->
+            <div class="window-status-bar" hidden>
+                <span class="status-text">Ready</span>
+            </div>
+        </div>
+    </template>
+    
+    <!-- JavaScript Modules -->
+    <script src="js/windowManager.js"></script>
+    <script src="js/apps/msn-messenger.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- App Scripts (load as needed) -->
+    <!-- <script src="js/apps/notepad.js"></script> -->
+    <!-- <script src="js/apps/paint.js"></script> -->
+</body>
+</html>

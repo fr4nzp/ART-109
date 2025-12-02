@@ -1,0 +1,317 @@
+/* =============================================================================
+   NOSTALGIA OS - DESKTOP STYLESHEET
+   Desktop background, icons, and icon interactions
+   ============================================================================= */
+
+/* =============================================================================
+   DESKTOP CONTAINER
+   ============================================================================= */
+
+.desktop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: var(--taskbar-height);
+    background-color: var(--win95-desktop);
+    background-image: 
+        /* Subtle noise texture for authenticity */
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.02) 2px,
+            rgba(0, 0, 0, 0.02) 4px
+        );
+    overflow: hidden;
+    z-index: var(--z-desktop);
+}
+
+/* Windows container - where all windows will be rendered */
+.windows-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none; /* Allow clicking through to desktop */
+}
+
+.windows-container > * {
+    pointer-events: auto; /* But windows themselves are clickable */
+}
+
+/* =============================================================================
+   DESKTOP ICONS
+   ============================================================================= */
+
+.desktop-icons {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 80px);
+    grid-auto-rows: 80px;
+    gap: 8px;
+    padding: 8px;
+}
+
+.desktop-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 4px;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    border: 1px solid transparent;
+    background-color: transparent;
+    transition: background-color 0.1s ease;
+}
+
+/* Icon image/emoji container */
+.icon-image {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin-bottom: 4px;
+    pointer-events: none;
+    /* Prevent emoji being dragged */
+    user-select: none;
+}
+
+/* Icon label text */
+.icon-label {
+    font-size: 11px;
+    color: var(--win95-white);
+    text-align: center;
+    word-wrap: break-word;
+    max-width: 100%;
+    line-height: 1.2;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    pointer-events: none;
+    user-select: none;
+}
+
+/* =============================================================================
+   ICON STATES
+   ============================================================================= */
+
+/* Hover state */
+.desktop-icon:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Selected state (single click) */
+.desktop-icon.selected {
+    background-color: var(--win95-selection);
+    border: 1px dotted var(--win95-white);
+}
+
+.desktop-icon.selected .icon-label {
+    color: var(--win95-selection-text);
+    background-color: var(--win95-selection);
+    padding: 1px 2px;
+}
+
+/* Focus state (keyboard navigation) */
+.desktop-icon:focus-visible {
+    outline: 1px dotted var(--win95-white);
+    outline-offset: 2px;
+}
+
+/* Active state (being clicked) */
+.desktop-icon:active {
+    transform: translateY(1px);
+}
+
+/* =============================================================================
+   ICON INTERACTIONS
+   ============================================================================= */
+
+/* Visual feedback for double-click activation */
+@keyframes icon-open {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.desktop-icon.opening {
+    animation: icon-open 0.2s ease;
+}
+
+/* =============================================================================
+   DESKTOP CONTEXT MENU
+   ============================================================================= */
+
+.context-menu {
+    position: absolute;
+    background-color: var(--win95-gray);
+    border: 2px solid;
+    border-color: var(--win95-light-gray) var(--win95-shadow-medium) 
+                  var(--win95-shadow-medium) var(--win95-light-gray);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    min-width: 150px;
+    z-index: calc(var(--z-windows-base) + 1000);
+    padding: 2px;
+}
+
+.context-menu-item {
+    padding: 4px 24px 4px 8px;
+    cursor: pointer;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.context-menu-item:hover {
+    background-color: var(--win95-selection);
+    color: var(--win95-selection-text);
+}
+
+.context-menu-item.disabled {
+    color: var(--win95-shadow-medium);
+    cursor: default;
+}
+
+.context-menu-item.disabled:hover {
+    background-color: transparent;
+    color: var(--win95-shadow-medium);
+}
+
+.context-menu-separator {
+    height: 1px;
+    background-color: var(--win95-shadow-medium);
+    margin: 2px 4px;
+    border-bottom: 1px solid var(--win95-white);
+}
+
+/* Context menu icons */
+.context-menu-item-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+/* Submenu indicator */
+.context-menu-item.has-submenu::after {
+    content: '▶';
+    position: absolute;
+    right: 8px;
+    font-size: 8px;
+}
+
+/* =============================================================================
+   SELECTION BOX (drag to select multiple icons)
+   ============================================================================= */
+
+.selection-box {
+    position: absolute;
+    border: 1px solid var(--win95-white);
+    background-color: rgba(0, 0, 128, 0.2);
+    pointer-events: none;
+    z-index: calc(var(--z-desktop) + 1);
+}
+
+/* =============================================================================
+   DESKTOP LOADING STATE
+   ============================================================================= */
+
+.desktop.loading {
+    cursor: wait;
+}
+
+.desktop.loading::before {
+    content: 'Starting Nostalgia OS...';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--win95-gray);
+    color: var(--win95-black);
+    padding: 16px 24px;
+    border: 2px solid;
+    border-color: var(--win95-light-gray) var(--win95-shadow-medium) 
+                  var(--win95-shadow-medium) var(--win95-light-gray);
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    z-index: calc(var(--z-desktop) + 10);
+}
+
+/* =============================================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================================= */
+
+@media (max-width: 768px) {
+    .desktop-icons {
+        grid-template-columns: repeat(auto-fill, 70px);
+        grid-auto-rows: 70px;
+        gap: 4px;
+    }
+    
+    .desktop-icon {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .icon-image {
+        font-size: 28px;
+    }
+    
+    .icon-label {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .desktop-icons {
+        grid-template-columns: repeat(auto-fill, 60px);
+        grid-auto-rows: 60px;
+    }
+    
+    .desktop-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .icon-image {
+        font-size: 24px;
+    }
+}
+
+/* =============================================================================
+   ACCESSIBILITY ENHANCEMENTS
+   ============================================================================= */
+
+/* High contrast mode adjustments */
+@media (prefers-contrast: high) {
+    .icon-label {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+        font-weight: bold;
+    }
+    
+    .desktop-icon.selected {
+        border-width: 2px;
+    }
+}
+
+/* Dark mode support (if needed) */
+@media (prefers-color-scheme: dark) {
+    /* Keep Win95 aesthetic regardless of system preference */
+    /* This block intentionally empty - we want to maintain teal desktop */
+}
