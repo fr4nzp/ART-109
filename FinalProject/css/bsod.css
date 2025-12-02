@@ -1,0 +1,67 @@
+/**
+ * Blue Screen of Death Easter Egg
+ * Classic Windows 98/2000 style
+ */
+
+.bsod-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #0000aa;
+    color: #ffffff;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 16px;
+    z-index: 99999;
+    display: none;
+    padding: 40px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.bsod-overlay.active {
+    display: block;
+}
+
+.bsod-content {
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+.bsod-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.bsod-error {
+    margin: 20px 0;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.bsod-code {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.bsod-instruction {
+    margin-top: 40px;
+    text-align: center;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
+}
+
+.bsod-footer {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    right: 40px;
+    font-size: 12px;
+    opacity: 0.8;
+}

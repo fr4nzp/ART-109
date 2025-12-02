@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/taskbar.css">
     <link rel="stylesheet" href="css/apps/msn-messenger.css">
     <link rel="stylesheet" href="css/clippy.css">
+    <link rel="stylesheet" href="css/bsod.css">
     
     <!-- Preload pixel font for better performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,6 +105,10 @@
                     <span class="menu-label">MSN Messenger</span>
                 </div>
                 <div class="start-menu-separator"></div>
+                <div class="start-menu-item" onclick="playShutdownSound()">
+                    <span class="menu-icon">🔌</span>
+                    <span class="menu-label">Shut Down...</span>
+                </div>
                 <div class="start-menu-item" data-app="about">
                     <span class="menu-icon">ℹ️</span>
                     <span class="menu-label">About Nostalgia OS</span>
@@ -168,6 +173,8 @@
     <script src="js/windowManager.js"></script>
     <script src="js/apps/msn-messenger.js"></script>
     <script src="js/clippy.js"></script>
+    <script src="js/bsod.js"></script>
+    <script src="js/shutdown.js"></script>
     <script src="js/main.js"></script>
     
     <!-- App Scripts (load as needed) -->
