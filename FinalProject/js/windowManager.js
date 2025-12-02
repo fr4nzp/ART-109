@@ -186,9 +186,107 @@ function getAppContent(appName) {
             </div>
         `,
         'recycle-bin': `
-            <div style="text-align: center; padding: 32px;">
-                <div style="font-size: 48px; margin-bottom: 16px;">🗑️</div>
-                <p style="font-size: 11px;">The Recycle Bin is empty.</p>
+            <div style="padding: 8px; height: 100%; display: flex; flex-direction: column;">
+                <div style="background: #ffffff; border: 2px inset #808080; flex: 1; overflow-y: auto; padding: 4px;">
+                    <table style="width: 100%; font-size: 11px; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #000080; color: #ffffff;">
+                                <th style="text-align: left; padding: 4px; border: 1px solid #808080;">Name</th>
+                                <th style="text-align: left; padding: 4px; border: 1px solid #808080;">Original Location</th>
+                                <th style="text-align: left; padding: 4px; border: 1px solid #808080;">Date Deleted</th>
+                                <th style="text-align: left; padding: 4px; border: 1px solid #808080;">Type</th>
+                                <th style="text-align: right; padding: 4px; border: 1px solid #808080;">Size</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="cursor: pointer;" onmouseover="this.style.background='#0000ff'; this.style.color='#ffffff'" onmouseout="this.style.background=''; this.style.color=''">
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">
+                                    <span style="margin-right: 4px;">📝</span>my_secret_diary.txt
+                                </td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">C:\\My Documents</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">3/15/2003</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">Text Document</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0; text-align: right;">2 KB</td>
+                            </tr>
+                            <tr style="cursor: pointer;" onmouseover="this.style.background='#0000ff'; this.style.color='#ffffff'" onmouseout="this.style.background=''; this.style.color=''">
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">
+                                    <span style="margin-right: 4px;">🎵</span>linkin_park_discography.zip
+                                </td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">C:\\Downloads\\LimeWire</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">6/22/2004</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">ZIP Archive</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0; text-align: right;">487 MB</td>
+                            </tr>
+                            <tr style="cursor: pointer;" onmouseover="this.style.background='#0000ff'; this.style.color='#ffffff'" onmouseout="this.style.background=''; this.style.color=''">
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">
+                                    <span style="margin-right: 4px;">⚠️</span>definitely_not_a_virus.exe
+                                </td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">C:\\Downloads</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">8/10/2005</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">Application</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0; text-align: right;">666 KB</td>
+                            </tr>
+                            <tr style="cursor: pointer;" onmouseover="this.style.background='#0000ff'; this.style.color='#ffffff'" onmouseout="this.style.background=''; this.style.color=''">
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">
+                                    <span style="margin-right: 4px;">�</span>homework (real)
+                                </td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">C:\\My Documents</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">11/3/2002</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">Folder</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0; text-align: right;">1.2 GB</td>
+                            </tr>
+                            <tr style="cursor: pointer;" onmouseover="this.style.background='#0000ff'; this.style.color='#ffffff'" onmouseout="this.style.background=''; this.style.color=''">
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">
+                                    <span style="margin-right: 4px;">📧</span>AOL_free_trial_cd.img
+                                </td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">C:\\</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">1/20/2001</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">Disc Image</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0; text-align: right;">650 MB</td>
+                            </tr>
+                            <tr style="cursor: pointer;" onmouseover="this.style.background='#0000ff'; this.style.color='#ffffff'" onmouseout="this.style.background=''; this.style.color=''">
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">
+                                    <span style="margin-right: 4px;">🖼️</span>my_myspace_profile_pic.jpg
+                                </td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">C:\\My Pictures</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">4/8/2006</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">JPEG Image</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0; text-align: right;">89 KB</td>
+                            </tr>
+                            <tr style="cursor: pointer;" onmouseover="this.style.background='#0000ff'; this.style.color='#ffffff'" onmouseout="this.style.background=''; this.style.color=''">
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">
+                                    <span style="margin-right: 4px;">🎮</span>pokemon_red_save.sav
+                                </td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">C:\\Emulators\\Saves</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">7/14/2004</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">Save File</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0; text-align: right;">32 KB</td>
+                            </tr>
+                            <tr style="cursor: pointer;" onmouseover="this.style.background='#0000ff'; this.style.color='#ffffff'" onmouseout="this.style.background=''; this.style.color=''">
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">
+                                    <span style="margin-right: 4px;">🌐</span>geocities_backup.html
+                                </td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">C:\\Websites</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">9/12/1999</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">HTML Document</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0; text-align: right;">14 KB</td>
+                            </tr>
+                            <tr style="cursor: pointer;" onmouseover="this.style.background='#0000ff'; this.style.color='#ffffff'" onmouseout="this.style.background=''; this.style.color=''">
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">
+                                    <span style="margin-right: 4px;">💿</span>totally_legal_windows_xp.iso
+                                </td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">C:\\Downloads\\Kazaa</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">10/25/2001</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0;">ISO Image</td>
+                                <td style="padding: 4px; border-bottom: 1px solid #e0e0e0; text-align: right;">699 MB</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="margin-top: 8px; padding: 4px; background: #e0e0e0; border-top: 1px solid #808080; display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 11px;">9 items in Recycle Bin (3.8 GB)</span>
+                    <button onclick="emptyRecycleBin()" style="padding: 4px 12px; font-size: 11px; cursor: pointer;">Empty Recycle Bin</button>
+                </div>
             </div>
         `,
         'paint': `
@@ -690,6 +788,41 @@ function removeFromTaskbar(windowId) {
 }
 
 // =============================================================================
+// HELPER FUNCTIONS
+// =============================================================================
+
+/**
+ * Empty Recycle Bin
+ */
+function emptyRecycleBin() {
+    // Show confirmation dialog
+    const confirmed = confirm('Are you sure you want to permanently delete these 9 items?\n\nThey will be gone forever... like your childhood.');
+    
+    if (confirmed) {
+        // Find recycle bin window
+        const recycleBinWindow = Array.from(WindowManager.windows.values())
+            .find(w => w.config.app === 'recycle-bin');
+        
+        if (recycleBinWindow) {
+            const content = recycleBinWindow.element.querySelector('.window-content');
+            content.innerHTML = `
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 32px;">
+                    <div style="font-size: 48px; margin-bottom: 16px;">🗑️</div>
+                    <p style="font-size: 11px; margin-bottom: 8px;">The Recycle Bin is empty.</p>
+                    <p style="font-size: 10px; color: #666; font-style: italic; margin-top: 16px; text-align: center;">
+                        All your memories are gone now.<br>
+                        Just like Geocities. Just like Myspace.<br>
+                        Everything is temporary.
+                    </p>
+                </div>
+            `;
+        }
+        
+        console.log('🗑️ Recycle Bin emptied');
+    }
+}
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
@@ -702,5 +835,6 @@ window.restoreWindow = restoreWindow;
 window.toggleMaximizeWindow = toggleMaximizeWindow;
 window.setActiveWindow = setActiveWindow;
 window.bringWindowToFront = setActiveWindow; // Alias for MSN Messenger
+window.emptyRecycleBin = emptyRecycleBin;
 
 console.log('✅ Window Manager loaded');

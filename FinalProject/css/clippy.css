@@ -1,0 +1,167 @@
+/* =============================================================================
+   CLIPPY - THE ANNOYING OFFICE ASSISTANT
+   Microsoft's iconic paperclip helper
+   ============================================================================= */
+
+/* Clippy Container */
+.clippy-container {
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    z-index: 9999;
+    animation: clippy-appear 0.5s ease-out;
+}
+
+@keyframes clippy-appear {
+    from {
+        transform: translateY(100px) scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Clippy Bubble */
+.clippy-bubble {
+    background: #ffffcc;
+    border: 2px solid #000000;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    position: relative;
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+    max-width: 250px;
+    font-family: 'Tahoma', Arial, sans-serif;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* Speech bubble tail */
+.clippy-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    right: 30px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 12px solid #000000;
+}
+
+.clippy-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -9px;
+    right: 32px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid #ffffcc;
+    z-index: 1;
+}
+
+/* Clippy Text */
+.clippy-text {
+    color: #000000;
+    margin-bottom: 12px;
+}
+
+.clippy-text strong {
+    font-weight: bold;
+}
+
+/* Clippy Buttons */
+.clippy-buttons {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+}
+
+.clippy-button {
+    padding: 3px 12px;
+    background: linear-gradient(180deg, #ffffff 0%, #e0e0e0 100%);
+    border: 1px solid #000000;
+    font-size: 10px;
+    font-family: 'Tahoma', Arial, sans-serif;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.clippy-button:hover {
+    background: linear-gradient(180deg, #f0f0f0 0%, #d0d0d0 100%);
+}
+
+.clippy-button:active {
+    background: #c0c0c0;
+    border-style: inset;
+}
+
+/* Clippy Character */
+.clippy-character {
+    width: 80px;
+    height: 100px;
+    position: relative;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+/* Animated Paperclip */
+.clippy-paperclip {
+    font-size: 72px;
+    display: block;
+    animation: clippy-bounce 2s ease-in-out infinite;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+}
+
+@keyframes clippy-bounce {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-5px) rotate(-5deg);
+    }
+    50% {
+        transform: translateY(0) rotate(5deg);
+    }
+    75% {
+        transform: translateY(-3px) rotate(-3deg);
+    }
+}
+
+/* Clippy Eyes (optional extra detail) */
+.clippy-eyes {
+    position: absolute;
+    top: 20px;
+    left: 28px;
+    font-size: 12px;
+    animation: clippy-blink 4s infinite;
+}
+
+@keyframes clippy-blink {
+    0%, 48%, 52%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Hide Clippy */
+.clippy-container.hidden {
+    animation: clippy-disappear 0.3s ease-out forwards;
+}
+
+@keyframes clippy-disappear {
+    from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(50px) scale(0);
+        opacity: 0;
+    }
+}
