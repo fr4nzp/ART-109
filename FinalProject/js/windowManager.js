@@ -369,7 +369,7 @@ function getAppContent(appName) {
                             
                             <h3 style="color: #000080; font-size: 14px; margin-top: 20px;">🎓 About This Project</h3>
                             <p style="margin: 12px 0;">
-                                Created as a final project for <strong>ART-109 Web Development</strong> at HfG Schwäbisch Gmünd.
+                                Created as a final project for <strong>ART-109 Web Development</strong> at SJSU.
                                 Built with vanilla HTML, CSS, and JavaScript to demonstrate modern web development skills 
                                 while recreating vintage aesthetics.
                             </p>
