@@ -300,26 +300,141 @@ function getAppContent(appName) {
             </div>
         `,
         'internet-explorer': `
-            <div style="display: flex; flex-direction: column; height: 100%;">
-                <div style="padding: 4px; display: flex; gap: 4px; background: #e0e0e0;">
-                    <input type="text" value="http://www.nostalgia.os/welcome.html" 
-                           style="flex: 1; padding: 2px 4px;" readonly>
-                    <button style="padding: 2px 8px;">Go</button>
+            <div style="display: flex; flex-direction: column; height: 100%; background: #c0c0c0;">
+                <!-- Browser Toolbar -->
+                <div style="padding: 4px; display: flex; gap: 4px; background: #e0e0e0; border-bottom: 1px solid #808080;">
+                    <button onclick="ieGoBack()" style="padding: 2px 8px; font-size: 11px;">← Back</button>
+                    <button onclick="ieGoForward()" style="padding: 2px 8px; font-size: 11px;">Forward →</button>
+                    <button onclick="ieRefresh()" style="padding: 2px 8px; font-size: 11px;">↻ Refresh</button>
+                    <button onclick="ieGoHome()" style="padding: 2px 8px; font-size: 11px;">🏠 Home</button>
                 </div>
-                <div style="flex: 1; padding: 16px; background: white; overflow: auto;">
-                    <h1 style="font-size: 24px; color: #000080; margin: 0 0 16px 0;">
-                        🌟 Welcome to Nostalgia OS! 🌟
-                    </h1>
-                    <p style="font-size: 11px; line-height: 1.6;">
-                        You've entered a digital time capsule from 1995...
-                    </p>
-                    <p style="font-size: 11px; line-height: 1.6;">
-                        Explore the desktop, open applications, and watch as the system 
-                        gradually decays with digital glitch effects.
-                    </p>
-                    <marquee style="margin-top: 16px; font-size: 11px;">
-                        ⭐ This site is best viewed in Internet Explorer 3.0 ⭐
-                    </marquee>
+                
+                <!-- Address Bar -->
+                <div style="padding: 4px; background: #f0f0f0; border-bottom: 1px solid #808080; display: flex; gap: 4px; align-items: center;">
+                    <span style="font-size: 11px;">Address:</span>
+                    <input id="ie-address-bar" type="text" value="http://www.nostalgia.os/welcome.html" 
+                           style="flex: 1; padding: 2px 4px; font-size: 11px; font-family: 'Courier New', monospace;" readonly>
+                    <button onclick="ieNavigate()" style="padding: 2px 8px; font-size: 11px;">Go</button>
+                </div>
+                
+                <!-- Tab Bar -->
+                <div style="display: flex; background: #e0e0e0; border-bottom: 2px solid #808080;">
+                    <div class="ie-tab active" onclick="ieShowTab('home')" style="padding: 6px 16px; background: #ffffff; border: 1px solid #808080; border-bottom: none; cursor: pointer; font-size: 11px; margin-right: 2px;">
+                        📄 Welcome
+                    </div>
+                    <div class="ie-tab" onclick="ieShowTab('error')" style="padding: 6px 16px; background: #d0d0d0; border: 1px solid #808080; border-bottom: none; cursor: pointer; font-size: 11px;">
+                        ⚠️ Error Page
+                    </div>
+                </div>
+                
+                <!-- Content Area -->
+                <div id="ie-content" style="flex: 1; padding: 16px; background: white; overflow: auto;">
+                    <!-- Home Page Content (default) -->
+                    <div id="ie-page-home" class="ie-page">
+                        <div style="text-align: center; margin-bottom: 24px;">
+                            <h1 style="font-size: 32px; color: #000080; margin: 0 0 8px 0; font-family: Arial, sans-serif;">
+                                🖥️ Nostalgia OS
+                            </h1>
+                            <p style="font-size: 13px; color: #666; font-style: italic;">
+                                A Digital Time Capsule from 1995-2005
+                            </p>
+                        </div>
+                        
+                        <div style="max-width: 600px; margin: 0 auto; font-size: 11px; line-height: 1.6;">
+                            <h2 style="color: #000080; font-size: 16px; border-bottom: 2px solid #000080; padding-bottom: 4px;">
+                                Welcome to Nostalgia OS
+                            </h2>
+                            
+                            <p style="margin: 16px 0;">
+                                <strong>Nostalgia OS</strong> is an interactive browser-based recreation of the Windows 95 
+                                desktop environment, celebrating the early era of personal computing and the internet.
+                            </p>
+                            
+                            <h3 style="color: #000080; font-size: 14px; margin-top: 20px;">🎯 Project Purpose</h3>
+                            <p style="margin: 12px 0;">
+                                This project explores <strong>digital nostalgia</strong> and the impermanence of technology. 
+                                Just as Windows 95, MSN Messenger, and Geocities have disappeared, this experience reminds 
+                                us that all digital artifacts are temporary.
+                            </p>
+                            
+                            <h3 style="color: #000080; font-size: 14px; margin-top: 20px;">✨ Features</h3>
+                            <ul style="margin: 12px 0; padding-left: 20px;">
+                                <li>Authentic Windows 95 interface with draggable windows</li>
+                                <li>MSN Messenger with nostalgic contacts</li>
+                                <li>Clippy, the "helpful" Office Assistant</li>
+                                <li>Recycle Bin filled with lost digital memories</li>
+                                <li>Classic applications: Notepad, Paint, Minesweeper</li>
+                                <li>Hidden Easter eggs and surprises</li>
+                            </ul>
+                            
+                            <h3 style="color: #000080; font-size: 14px; margin-top: 20px;">🎓 About This Project</h3>
+                            <p style="margin: 12px 0;">
+                                Created as a final project for <strong>ART-109 Web Development</strong> at HfG Schwäbisch Gmünd.
+                                Built with vanilla HTML, CSS, and JavaScript to demonstrate modern web development skills 
+                                while recreating vintage aesthetics.
+                            </p>
+                            
+                            <p style="margin: 20px 0; padding: 12px; background: #ffffcc; border: 1px solid #ffcc00;">
+                                <strong>💡 Tip:</strong> Double-click desktop icons to explore different applications. 
+                                Wait for Clippy to appear with "helpful" suggestions!
+                            </p>
+                            
+                            <div style="text-align: center; margin-top: 32px; padding-top: 16px; border-top: 1px solid #cccccc;">
+                                <p style="font-size: 10px; color: #999;">
+                                    © 2024 Nostalgia OS | Made with 💾 by Franz<br>
+                                    <em>Best viewed in Internet Explorer 3.0 at 800x600 resolution</em>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Error Page Content (hidden by default) -->
+                    <div id="ie-page-error" class="ie-page" style="display: none;">
+                        <div style="max-width: 500px; margin: 40px auto;">
+                            <div style="display: flex; gap: 16px; align-items: flex-start;">
+                                <div style="font-size: 48px;">⚠️</div>
+                                <div>
+                                    <h2 style="font-size: 18px; color: #000000; margin: 0 0 16px 0;">
+                                        The page cannot be displayed
+                                    </h2>
+                                    
+                                    <p style="font-size: 11px; line-height: 1.6; margin-bottom: 16px;">
+                                        The page you are looking for is currently unavailable. The Web site might 
+                                        be experiencing technical difficulties, or you may need to adjust your browser settings.
+                                    </p>
+                                    
+                                    <hr style="border: none; border-top: 1px solid #cccccc; margin: 20px 0;">
+                                    
+                                    <h3 style="font-size: 12px; margin-bottom: 12px;">Please try the following:</h3>
+                                    
+                                    <ul style="font-size: 11px; line-height: 1.8; padding-left: 20px;">
+                                        <li>Click the <strong>Refresh</strong> button, or try again later.</li>
+                                        <li>If you typed the page address in the Address bar, make sure that it is spelled correctly.</li>
+                                        <li>Open the <strong>localhost</strong> home page, and then look for links to the information you want.</li>
+                                        <li>Click the <button onclick="alert('Search functionality not available. This is a 1999 website.')" style="font-size: 10px; padding: 2px 6px; cursor: pointer;">Search</button> button to look for information on the Internet.</li>
+                                    </ul>
+                                    
+                                    <div style="background: #f0f0f0; padding: 12px; margin-top: 20px; border-left: 4px solid #000080;">
+                                        <p style="font-size: 10px; margin: 0; line-height: 1.5;">
+                                            <strong>HTTP 404 - File not found</strong><br>
+                                            Internet Explorer
+                                        </p>
+                                    </div>
+                                    
+                                    <p style="font-size: 9px; color: #666; margin-top: 20px; font-style: italic;">
+                                        (This error page is intentionally part of Nostalgia OS. Remember when the internet 
+                                        felt this fragile? When nothing worked and we just accepted it?)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Status Bar -->
+                <div style="padding: 2px 8px; background: #e0e0e0; border-top: 1px solid #808080; font-size: 10px; display: flex; justify-content: space-between;">
+                    <span>🌐 Internet zone</span>
+                    <span id="ie-status">Done</span>
                 </div>
             </div>
         `,
@@ -820,6 +935,79 @@ function emptyRecycleBin() {
         
         console.log('🗑️ Recycle Bin emptied');
     }
+}
+
+/**
+ * Internet Explorer Tab Navigation
+ */
+function ieShowTab(tabName) {
+    // Hide all pages
+    const pages = document.querySelectorAll('.ie-page');
+    pages.forEach(page => page.style.display = 'none');
+    
+    // Show selected page
+    const selectedPage = document.getElementById(`ie-page-${tabName}`);
+    if (selectedPage) {
+        selectedPage.style.display = 'block';
+    }
+    
+    // Update tab styles
+    const tabs = document.querySelectorAll('.ie-tab');
+    tabs.forEach(tab => {
+        tab.style.background = '#d0d0d0';
+    });
+    
+    // Highlight active tab
+    event.target.style.background = '#ffffff';
+    
+    // Update address bar
+    const addressBar = document.getElementById('ie-address-bar');
+    if (addressBar) {
+        if (tabName === 'home') {
+            addressBar.value = 'http://www.nostalgia.os/welcome.html';
+        } else if (tabName === 'error') {
+            addressBar.value = 'http://www.nostalgia.os/404.html';
+        }
+    }
+    
+    console.log(`🌐 IE: Switched to ${tabName} page`);
+}
+
+function ieGoBack() {
+    document.getElementById('ie-status').textContent = 'Going back...';
+    setTimeout(() => {
+        document.getElementById('ie-status').textContent = 'Done';
+    }, 500);
+}
+
+function ieGoForward() {
+    document.getElementById('ie-status').textContent = 'Going forward...';
+    setTimeout(() => {
+        document.getElementById('ie-status').textContent = 'Done';
+    }, 500);
+}
+
+function ieRefresh() {
+    document.getElementById('ie-status').textContent = 'Refreshing...';
+    setTimeout(() => {
+        document.getElementById('ie-status').textContent = 'Done';
+    }, 800);
+}
+
+function ieGoHome() {
+    ieShowTab('home');
+    document.getElementById('ie-status').textContent = 'Loading home page...';
+    setTimeout(() => {
+        document.getElementById('ie-status').textContent = 'Done';
+    }, 500);
+}
+
+function ieNavigate() {
+    document.getElementById('ie-status').textContent = 'Connecting...';
+    setTimeout(() => {
+        alert('Error: Unable to connect to server.\n\nThe Internet is not available.');
+        document.getElementById('ie-status').textContent = 'Done';
+    }, 1000);
 }
 
 // =============================================================================
